@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Leaf Tea House | Premium Tea Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #b8941f;
+            --light-gold: #f5e8c6;
+            --green: #2e5c3a;
+            --dark-green: #1e3a27;
+            --light-green: #4a7c59;
+            --cream: #f9f5eb;
+            --brown: #5d4037;
+            --light-brown: #8d6e63;
+            --dark: #1a1a1a;
+            --gradient-gold: linear-gradient(135deg, #d4af37, #f5e8c6, #d4af37);
+            --gradient-green: linear-gradient(135deg, #2e5c3a, #4a7c59, #2e5c3a);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a, #2e2e2e, #1a1a1a);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 3px;
+        }
+
+        h3 {
+            font-size: 2.2rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-gold);
+            color: var(--dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: var(--light-shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gradient-green);
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient-gold);
+            color: var(--dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 12rem;
+            padding-bottom: 8rem;
+            background: linear-gradient(rgba(30, 58, 39, 0.85), rgba(46, 92, 58, 0.9)), url('https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-dark);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            position: relative;
+        }
+
+        .hero h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(212, 175, 55, 0.3);
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .quote-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 4rem;
+            border-left: 4px solid var(--gold);
+            text-align: left;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--light-gold);
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Main - Tea Types */
+        .tea-types {
+            background-color: var(--cream);
+        }
+
+        .tea-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .tea-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--light-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tea-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow);
+        }
+
+        .tea-img {
+            height: 250px;
+            background-color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tea-img:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-green);
+            opacity: 0.8;
+        }
+
+        .tea-info {
+            padding: 2rem;
+        }
+
+        .tea-info h3 {
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .tea-price {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .tea-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tea-tag {
+            padding: 0.3rem 1rem;
+            background-color: var(--light-gold);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--brown);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--cream) 0%, #f0e6d3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 10px solid white;
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gold);
+            border-radius: var(--radius);
+            z-index: -1;
+        }
+
+        /* Founder Section */
+        .founder {
+            background: var(--gradient-dark);
+            color: white;
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .founder-image {
+            position: relative;
+        }
+
+        .founder-image img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            border: 10px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .founder-text h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-text p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .founder-quote {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        /* Blogs Section */
+        .blogs {
+            background-color: var(--cream);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--light-shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .blog-img {
+            height: 250px;
+            background-color: var(--green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-img:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-green);
+            opacity: 0.5;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-content h4 {
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--light-brown);
+        }
+
+        /* Technology Section */
+        .technology {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
+            color: white;
+        }
+
+        .tech-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+        }
+
+        .tech-card i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-card h4 {
+            color: var(--light-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .footer-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .footer-logo-text span {
+            color: var(--gold);
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--gradient-gold);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-links h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .footer-contact h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Motivational Quotes */
+        .floating-quotes {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .floating-quote {
+            background: var(--gradient-gold);
+            color: var(--dark);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            max-width: 300px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            cursor: pointer;
+        }
+
+        .floating-quote.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content, .founder-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-image:before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 3rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 4rem 1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                max-width: 300px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .floating-quotes {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            h3 {
+                font-size: 1.8rem;
+            }
+            
+            .tea-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+                <div class="logo-text">Golden<span>Leaf</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tea-types">Our Teas</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#founder">Founder</a></li>
+                <li><a href="#blogs">Blog</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover the <span>Art of Tea</span></h1>
+                <p>Experience the world's finest teas, curated from exotic gardens and crafted with centuries of tradition. Each cup tells a story of culture, craftsmanship, and connection.</p>
+                <div class="hero-btns">
+                    <a href="#tea-types" class="btn">Explore Our Collection</a>
+                    <a href="#about" class="btn btn-secondary">Visit Our Tea House</a>
+                </div>
+                
+                <div class="quote-container">
+                    <div class="quote">"Tea is the magic key to the vault where my brain is kept."</div>
+                    <div class="quote-author">- Frances Hardinge</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main - Tea Types Section -->
+    <section id="tea-types" class="tea-types">
+        <div class="container">
+            <h2>Our Premium Tea Collection</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Each tea is carefully selected from the world's finest gardens, processed with traditional methods, and packed to preserve freshness and flavor.</p>
+            
+            <div class="tea-grid">
+                <div class="tea-card">
+                    <div class="tea-img" style="background: url('https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="tea-info">
+                        <h3>Golden Darjeeling</h3>
+                        <div class="tea-price">$24.99 / 100g</div>
+                        <div class="tea-tags">
+                            <span class="tea-tag">Black Tea</span>
+                            <span class="tea-tag">India</span>
+                            <span class="tea-tag">Award Winning</span>
+                        </div>
+                        <p>Known as the "Champagne of Teas," this first flush Darjeeling offers a delicate muscatel flavor with floral notes.</p>
+                        <a href="#" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="tea-card">
+                    <div class="tea-img" style="background: url('https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="tea-info">
+                        <h3>Matcha Ceremonial Grade</h3>
+                        <div class="tea-price">$32.99 / 30g</div>
+                        <div class="tea-tags">
+                            <span class="tea-tag">Green Tea</span>
+                            <span class="tea-tag">Japan</span>
+                            <span class="tea-tag">Premium</span>
+                        </div>
+                        <p>Stone-ground shade-grown tea leaves from Uji, Japan. Vibrant green color with a rich, umami flavor.</p>
+                        <a href="#" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="tea-card">
+                    <div class="tea-img" style="background: url('https://images.unsplash.com/photo-1567945711762-1f4c691d18e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="tea-info">
+                        <h3>White Peony</h3>
+                        <div class="tea-price">$28.99 / 100g</div>
+                        <div class="tea-tags">
+                            <span class="tea-tag">White Tea</span>
+                            <span class="tea-tag">China</span>
+                            <span class="tea-tag">Delicate</span>
+                        </div>
+                        <p>A delicate white tea from Fujian, China with sweet, honey-like notes and a smooth, mellow finish.</p>
+                        <a href="#" class="btn">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="tea-card">
+                    <div class="tea-img" style="background: url('https://images.unsplash.com/photo-1597481499751-6d4d6c4fb68e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="tea-info">
+                        <h3>Oolong Supreme</h3>
+                        <div class="tea-price">$26.99 / 100g</div>
+                        <div class="tea-tags">
+                            <span class="tea-tag">Oolong Tea</span>
+                            <span class="tea-tag">Taiwan</span>
+                            <span class="tea-tag">Semi-oxidized</span>
+                        </div>
+                        <p>Hand-rolled leaves from Taiwan with complex floral aromas and a smooth, buttery texture.</p>
+                        <a href="#" class="btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Golden Leaf Tea House</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2010, Golden Leaf Tea House began as a small boutique in London's Covent Garden. Today, we're recognized globally for our commitment to sourcing only the finest teas from sustainable gardens around the world.</p>
+                    <p>Our master blenders travel to remote regions of China, Japan, India, Sri Lanka, and Kenya to personally select leaves at the peak of their flavor. We work directly with farmers who share our values of ethical practices and environmental stewardship.</p>
+                    <p>Every tea in our collection tells a story - from the misty mountains of Darjeeling to the ancient tea forests of Yunnan. We're not just selling tea; we're offering an experience, a moment of peace in a busy world.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Tea Varieties</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">13</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50k+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Awards</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Golden Leaf Tea House Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="founder">
+        <div class="container">
+            <h2 style="color: var(--gold);">Meet Our Founder</h2>
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Eleanor Chen - Founder">
+                </div>
+                <div class="founder-text">
+                    <h3>Eleanor Chen</h3>
+                    <p>With a family history in tea cultivation spanning five generations in Taiwan, Eleanor's passion for tea began in her grandmother's garden. After studying botany at Oxford, she combined scientific knowledge with traditional wisdom to create Golden Leaf.</p>
+                    <p>"Tea is more than a beverage - it's a ritual, a moment of mindfulness, a connection to nature and to each other. My mission is to share this experience with the world."</p>
+                    
+                    <div class="founder-quote">
+                        <p>"I believe that in each cup of properly brewed tea, you can taste the care of the farmer, the skill of the processor, and the history of centuries of tradition. That's why we're meticulous about every step - from leaf to cup."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="blogs">
+        <div class="container">
+            <h2>Tea Wisdom & Stories</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Explore our blog for tea preparation tips, health benefits, cultural stories, and the latest from the world of premium tea.</p>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img" style="background: url('https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80'); background-size: cover; background-position: center;"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 18, 2023</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h4>The Art of Gongfu Tea Ceremony</h4>
+                        <p>Discover the traditional Chinese Gongfu tea ceremony - a meditative practice that transforms tea brewing into an art form.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background: url('https://images.unsplash.com/photo-1597481499751-6d4d6c4fb68e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 22, 2023</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h4>Health Benefits of Green Tea</h4>
+                        <p>Scientific research reveals the antioxidant power of green tea and its potential benefits for heart health and cognitive function.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img" style="background: url('https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 10, 2023</span>
+                            <span><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                        <h4>Sustainability in Tea Farming</h4>
+                        <p>How regenerative agriculture practices are creating better tea, healthier ecosystems, and improved livelihoods for farmers.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="technology">
+        <div class="container">
+            <h2>Our Technology & Process</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 4rem; opacity: 0.9;">We combine centuries-old traditions with modern technology to ensure every cup meets our exacting standards of quality and flavor.</p>
+            
+            <div class="tech-container">
+                <div class="tech-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h4>Precision Temperature Control</h4>
+                    <p>Computer-controlled water heating systems ensure optimal brewing temperature for each tea type.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Leaf Integrity Scanning</h4>
+                    <p>Advanced imaging technology assesses leaf quality, size, and color consistency before packaging.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-wind"></i>
+                    <h4>Nitrogen Flush Packaging</h4>
+                    <p>Oxygen-free packaging technology preserves freshness and flavor for up to 24 months.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-microscope"></i>
+                    <h4>Laboratory Testing</h4>
+                    <p>Every batch undergoes rigorous testing for purity, flavor profile, and antioxidant levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="footer-logo-text">Golden<span>Leaf</span></div>
+                    </div>
+                    <p>Experience the world's finest teas, curated from exotic gardens and crafted with centuries of tradition. Each cup tells a story of culture, craftsmanship, and connection.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tea-types">Tea Collection</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#founder">Our Founder</a></li>
+                        <li><a href="#blogs">Tea Blog</a></li>
+                        <li><a href="#technology">Our Technology</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Covent Garden, London WC2E 8BE, UK</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+44 20 7123 4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@goldenleaftea.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 9am-8pm | Sun: 10am-6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Golden Leaf Tea House. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--gold);"></i> for tea lovers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Motivational Quotes -->
+    <div class="floating-quotes">
+        <div class="floating-quote" id="quote1">"There is no trouble so great or grave that cannot be much diminished by a nice cup of tea."</div>
+        <div class="floating-quote" id="quote2">"Tea is liquid wisdom."</div>
+        <div class="floating-quote" id="quote3">"Each cup of tea represents an imaginary voyage."</div>
+    </div>
+
+    <script>
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Floating quotes rotation
+        const quotes = document.querySelectorAll('.floating-quote');
+        let currentQuote = 0;
+        
+        // Show first quote
+        if (quotes.length > 0) {
+            quotes[0].classList.add('active');
+            
+            // Rotate quotes every 8 seconds
+            setInterval(() => {
+                quotes[currentQuote].classList.remove('active');
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quotes[currentQuote].classList.add('active');
+            }, 8000);
+            
+            // Allow clicking to cycle quotes
+            quotes.forEach((quote, index) => {
+                quote.addEventListener('click', () => {
+                    quotes[currentQuote].classList.remove('active');
+                    currentQuote = index;
+                    quotes[currentQuote].classList.add('active');
+                });
+            });
+        }
+        
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.tea-card, .blog-card, .tech-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Tea card hover effect enhancement
+        document.querySelectorAll('.tea-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.tea-img i').style.transform = 'scale(1.2)';
+                this.querySelector('.tea-img i').style.transition = 'transform 0.5s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.tea-img i').style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
